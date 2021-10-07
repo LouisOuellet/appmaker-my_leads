@@ -78,7 +78,7 @@ API.Plugins.my_leads = {
 										text:'<i class="icon icon-create mr-1"></i>'+API.Contents.Language['Create'],
 										name:'create',
 										action:function(){
-											API.CRUD.create.show({plugin:'my_leads',table:API.Plugins.my_leads.element.table.index,required:["lead"]},function(status,row){});
+											API.CRUD.create.show({plugin:'my_leads',table:API.Plugins.my_leads.element.table.index,required:["name"]},function(status,row){});
 										},
 									},
 								],
