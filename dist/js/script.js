@@ -30,7 +30,6 @@ API.Plugins.my_leads = {
 			},
 			extra:{
 				0:"tags",
-				1:"assigned_to",
 			},
 		},
 		update:{
