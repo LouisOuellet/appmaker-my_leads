@@ -68,6 +68,7 @@ API.Plugins.my_leads = {
 							plugin:"organizations",
 							import:{ key:'name', },
 							clickable:{ enable:true, plugin:'organizations', view:'details'},
+							set:{status:1,isActive:"true",isLead:"true"},
 							controls:{
 								toolbar:true,
 								disable:['create'],
