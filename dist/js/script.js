@@ -58,9 +58,9 @@ API.Plugins.my_leads = {
 				API.request('my_leads','read',{data:{}},function(result) {
 					var dataset = JSON.parse(result);
 					if(dataset.success != undefined){
-						for(const [key, value] of Object.entries(dataset.output.results)){ API.Helper.set(API.Contents,['data','dom','my_leads',value.name],value); }
+						for(const [key, value] of Object.entries(dataset.output.dom)){ API.Helper.set(API.Contents,['data','dom','my_leads',value.name],value); }
 						for(const [key, value] of Object.entries(dataset.output.raw)){ API.Helper.set(API.Contents,['data','raw','my_leads',value.name],value); }
-						API.Builder.table(card.children('.card-body'), dataset.output.results, {
+						API.Builder.table(card.children('.card-body'), dataset.output.dom, {
 							headers:dataset.output.headers,
 							id:'my_leadsIndex',
 							modal:true,
