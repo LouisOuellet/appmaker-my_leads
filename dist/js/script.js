@@ -10,12 +10,6 @@ API.Plugins.my_leads = {
 	forms:{
 		create:{
 			0:"name",
-			contact:{
-			  0:"first_name",
-			  1:"middle_name",
-			  2:"last_name",
-			  3:"job_title",
-			},
 			company_information:{
 				0:"address",
 				1:"city",
@@ -27,9 +21,6 @@ API.Plugins.my_leads = {
 				7:"fax",
 				8:"email",
 				9:"website",
-			},
-			extra:{
-				0:"tags",
 			},
 		},
 		update:{
