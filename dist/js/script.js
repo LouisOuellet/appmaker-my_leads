@@ -1,4 +1,4 @@
-API.Plugins.my_leads = {
+Engine.Plugins.my_leads = {
 	element:{
 		modal:{
 			read:{},
@@ -41,23 +41,23 @@ API.Plugins.my_leads = {
 		},
 	},
 	init:function(){
-		API.GUI.Sidebar.Nav.add('my_leads', 'main_navigation');
+		Engine.GUI.Sidebar.Nav.add('my_leads', 'main_navigation');
 	},
 	load:{
 		index:function(){
-			API.Builder.card($('#pagecontent'),{ title: 'my_leads', icon: 'my_leads'}, function(card){
-				API.request('my_leads','read',{data:{}},function(result) {
+			Engine.Builder.card($('#pagecontent'),{ title: 'my_leads', icon: 'my_leads'}, function(card){
+				Engine.request('my_leads','read',{data:{}},function(result) {
 					var dataset = JSON.parse(result);
 					if(dataset.success != undefined){
-						for(const [key, value] of Object.entries(dataset.output.dom)){ API.Helper.set(API.Contents,['data','dom','my_leads',value.name],value); }
-						for(const [key, value] of Object.entries(dataset.output.raw)){ API.Helper.set(API.Contents,['data','raw','my_leads',value.name],value); }
-						API.Builder.table(card.children('.card-body'), dataset.output.dom, {
+						for(const [key, value] of Object.entries(dataset.output.dom)){ Engine.Helper.set(Engine.Contents,['data','dom','my_leads',value.id],value); }
+						for(const [key, value] of Object.entries(dataset.output.raw)){ Engine.Helper.set(Engine.Contents,['data','raw','my_leads',value.id],value); }
+						Engine.Builder.table(card.children('.card-body'), dataset.output.dom, {
 							headers:dataset.output.headers,
 							id:'my_leadsIndex',
 							modal:true,
-							key:'name',
+							key:'id',
 							plugin:"organizations",
-							import:{ key:'name', },
+							import:{ key:'id', },
 							clickable:{ enable:true, plugin:'organizations', view:'details'},
 							set:{status:1,isActive:"true",isLead:"true"},
 							controls:{
@@ -66,16 +66,16 @@ API.Plugins.my_leads = {
 								add:[
 									{
 										menu:'file',
-										text:'<i class="icon icon-create mr-1"></i>'+API.Contents.Language['Create'],
+										text:'<i class="icon icon-create mr-1"></i>'+Engine.Contents.Language['Create'],
 										name:'create',
 										action:function(){
-											API.CRUD.create.show({plugin:'my_leads',table:API.Plugins.my_leads.element.table.index,required:["name"]},function(status,row){});
+											Engine.CRUD.create.show({plugin:'my_leads',table:Engine.Plugins.my_leads.element.table.index,required:["name"]},function(status,row){});
 										},
 									},
 								],
 							}
 						},function(response){
-							API.Plugins.my_leads.element.table.index = response.table;
+							Engine.Plugins.my_leads.element.table.index = response.table;
 						});
 					}
 				});
@@ -85,4 +85,4 @@ API.Plugins.my_leads = {
 	extend:{},
 }
 
-API.Plugins.my_leads.init();
+Engine.Plugins.my_leads.init();
